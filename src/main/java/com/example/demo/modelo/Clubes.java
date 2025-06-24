@@ -38,42 +38,7 @@ public class Clubes {
 	@OneToMany(mappedBy = "clubV", cascade= CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
 	private List<Partidos> partidosV;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public int getNrozona() {
-		return Nrozona;
-	}
-	public void setNrozona(int nrozona) {
-		Nrozona = nrozona;
-	}
-	public List<Jugadores> getJugadores() {
-		return jugadores;
-	}
-	public void setJugadores(List<Jugadores> jugadores) {
-		this.jugadores = jugadores;
-	}
-	public List<Partidos> getPartidosL() {
-		return partidosL;
-	}
-	public void setPartidosL(List<Partidos> partidosL) {
-		this.partidosL = partidosL;
-	}
-	public List<Partidos> getPartidosV() {
-		return partidosV;
-	}
-	public void setPartidosV(List<Partidos> partidosV) {
-		this.partidosV = partidosV;
-	}
+
 	
 	
 	

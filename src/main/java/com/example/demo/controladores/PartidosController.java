@@ -38,4 +38,23 @@ public class PartidosController {
 		serviciopartidos.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@GetMapping("/club/{id}/local")
+	public ResponseEntity<List<Partidos>> partidosLocal(@PathVariable int id){
+		return ResponseEntity.ok(serviciopartidos.buscaarPorClubLocal(id));
+	}
+	
+	@GetMapping("/club/{id}/visitante")
+	public ResponseEntity<List<Partidos>> partidosVisitante(@PathVariable int id){
+		return ResponseEntity.ok(serviciopartidos.buscaarPorClubVisitante(id));
+	}
+	
+	@GetMapping("/club/{id}/todos")
+	public ResponseEntity<List<Partidos>> partidoTodos(@PathVariable int id){
+		return ResponseEntity.ok(serviciopartidos.buscaarPorClubTodos(id));
+	}
+	@PostMapping("/validado")
+	public ResponseEntity<Partidos> crearPartidoValidado(@RequestBody Partidos partido) {
+	    return ResponseEntity.ok(serviciopartidos.agregarPartidoValidado(partido));
+	}
 }

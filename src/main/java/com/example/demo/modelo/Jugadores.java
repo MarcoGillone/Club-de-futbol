@@ -2,6 +2,8 @@ package com.example.demo.modelo;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -29,7 +31,8 @@ public class Jugadores {
 	@Column(name = "Categoria")
 	private int categoria;
 	@ManyToOne
-	@JoinColumn(name = "Id_Club", nullable = false)
+	@JsonIgnore
+	@JoinColumn(name = "id_club", nullable = true)
 	private Clubes club;
 
 	

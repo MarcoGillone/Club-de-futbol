@@ -2,6 +2,8 @@ package com.example.demo.modelo;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +23,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Clubes {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id_Club")
 	private int id;
 	@Column(name = "Nombre", length = 30)
@@ -29,10 +30,13 @@ public class Clubes {
 	@Column(name = "Nrozona")
 	private int Nrozona;
 	@OneToMany(mappedBy = "club", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private List<Jugadores>jugadores;
 	@OneToMany(mappedBy = "clubL", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private List<Partidos> partidosL;
 	@OneToMany(mappedBy = "clubV", cascade= CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
 	private List<Partidos> partidosV;
 	public int getId() {
 		return id;

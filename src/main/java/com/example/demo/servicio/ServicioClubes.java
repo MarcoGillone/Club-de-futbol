@@ -22,9 +22,13 @@ public class ServicioClubes {
 	@Transactional
 	public Clubes findById(int id) {
 		return clubesrepository.findById(id).orElseThrow(()-> new RuntimeException("No se encontro el club"));
+		
 	}
 	@Transactional
 	public Clubes save(Clubes club) {
+		if(clubesrepository.existsById(club.getId())) {
+			throw new RuntimeException("ya existe un club con ese id"); 
+		}
 		return clubesrepository.save(club);
 	}
 	@Transactional

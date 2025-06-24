@@ -1,6 +1,8 @@
 package com.example.demo.modelo;
 
-import java.sql.Date;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,104 +27,33 @@ public class Partidos {
 	private int id;
 	
 	@Column(name = "NroFecha")
-	private int NroFecha;
+	private int nroFecha;
 	
 	@Column(name = "NroZona")
-	private int NroZona;
+	private int nroZona;
 	
 	@Column(name = "Categoria")
 	private int categoria;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "Id_ClubL")
 	private Clubes clubL;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "Id_ClubV")
 	private Clubes clubV;
 	
-	@Column(name = "GolesL", nullable = false)
+	@Column(name = "GolesL")
 	private int golesL;
 	
-	@Column(name = "GolesV", nullable = false)
+	@Column(name = "GolesV")
 	private int golesV;
 	
-	@Column(name = "FechaPartido", nullable = false)
-	private Date fechaPartido;
+	@Column(name = "FechaPartido", nullable = true)
+	private LocalDate  fechaPartido;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getNroFecha() {
-		return NroFecha;
-	}
-
-	public void setNroFecha(int nroFecha) {
-		NroFecha = nroFecha;
-	}
-
-	public int getNroZona() {
-		return NroZona;
-	}
-
-	public void setNroZona(int nroZona) {
-		NroZona = nroZona;
-	}
-
-	public int getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(int categoria) {
-		this.categoria = categoria;
-	}
-
-	public Clubes getClubL() {
-		return clubL;
-	}
-
-	public void setClubL(Clubes clubL) {
-		this.clubL = clubL;
-	}
-
-	public Clubes getClubV() {
-		return clubV;
-	}
-
-	public void setClubV(Clubes clubV) {
-		this.clubV = clubV;
-	}
-
-	public int getGolesL() {
-		return golesL;
-	}
-
-	public void setGolesL(int golesL) {
-		this.golesL = golesL;
-	}
-
-	public int getGolesV() {
-		return golesV;
-	}
-
-	public void setGolesV(int golesV) {
-		this.golesV = golesV;
-	}
-
-	public Date getFechaPartido() {
-		return fechaPartido;
-	}
-
-	public void setFechaPartido(Date fechaPartido) {
-		this.fechaPartido = fechaPartido;
-	}
-	
-	
 	
 	
 	

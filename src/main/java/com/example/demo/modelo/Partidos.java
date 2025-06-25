@@ -36,12 +36,10 @@ public class Partidos {
 	private int categoria;
 	
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name = "Id_ClubL")
 	private Clubes clubL;
 	
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name = "Id_ClubV")
 	private Clubes clubV;
 	

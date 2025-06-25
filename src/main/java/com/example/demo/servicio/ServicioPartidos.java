@@ -63,10 +63,8 @@ public class ServicioPartidos {
 	        throw new RuntimeException("Debes especificar ambos clubes.");
 	    }
 
-	    Clubes local = clubesrepository.findById(idL)
-	        .orElseThrow(() -> new RuntimeException("Club local no existe"));
-	    Clubes visita = clubesrepository.findById(idV)
-	        .orElseThrow(() -> new RuntimeException("Club visitante no existe"));
+	    Clubes local = clubesrepository.findById(idL).orElseThrow(() -> new RuntimeException("Club local no existe"));
+	    Clubes visita = clubesrepository.findById(idV) .orElseThrow(() -> new RuntimeException("Club visitante no existe"));
 
 	    if (local.getNrozona() != visita.getNrozona()) {
 	        throw new RuntimeException("Los clubes deben ser de la misma zona.");
@@ -75,6 +73,15 @@ public class ServicioPartidos {
 	    partido.setClubL(local);
 	    partido.setClubV(visita);
 	    return partidosrepository.save(partido);
+	}
+	
+	@Transactional
+	public Partidos actualizarResultado(int id, int golV, int golL) {
+		Partidos partido = findById(id);
+		partido.setGolesL(golL);
+		partido.setGolesV(golV);
+		return partidosrepository.save(partido);
+		
 	}
 
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,5 +57,10 @@ public class PartidosController {
 	@PostMapping("/validado")
 	public ResponseEntity<Partidos> crearPartidoValidado(@RequestBody Partidos partido) {
 	    return ResponseEntity.ok(serviciopartidos.agregarPartidoValidado(partido));
+	}
+	@PutMapping("/actualizar/{id}/")
+	public ResponseEntity<Partidos> actualizar(@PathVariable int id, @RequestBody int golV, @RequestBody int golL){
+		Partidos partido = serviciopartidos.actualizarResultado(id, golV, golL);
+		return ResponseEntity.ok(partido);
 	}
 }
